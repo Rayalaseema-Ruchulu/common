@@ -1,11 +1,12 @@
+import 'package:common/models/category.dart';
+import 'package:common/models/item_details.dart';
+import 'package:common/models/menu_item.dart';
 import 'package:dio/dio.dart';
 import 'package:dio_cache_interceptor/dio_cache_interceptor.dart';
 import 'package:flutter/foundation.dart' hide Category;
 import 'package:http_cache_file_store/http_cache_file_store.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
-import 'package:rr_common/models/category.dart';
-import 'package:rr_common/models/item_details.dart';
-import 'package:rr_common/models/menu_item.dart';
+
 
 class ApiClient {
   final Dio _client;
