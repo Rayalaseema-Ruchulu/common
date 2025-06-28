@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:common/models/category.dart';
 import 'package:common/models/item_details.dart';
 import 'package:common/models/menu_item.dart';
@@ -6,7 +8,6 @@ import 'package:dio_cache_interceptor/dio_cache_interceptor.dart';
 import 'package:flutter/foundation.dart' hide Category;
 import 'package:http_cache_file_store/http_cache_file_store.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
-
 
 class ApiClient {
   final Dio _client;
@@ -59,8 +60,8 @@ class ApiClient {
   }
 
   /// Get all the items of a category
-  Future<List<MenuItem>> getCategory(int id) async {
-    final response = await _client.get("/menu/category/$id");
+  Future<List<MenuItem>> getCategoryItems(int id) async {
+    final response = await _client.get("/menu/category/$id/items");
     final json = response.data as List<dynamic>;
     final items = json.map((item) {
       return MenuItem.fromJson(item);
@@ -68,7 +69,15 @@ class ApiClient {
 
     return items;
   }
+  
+  /// Get the information about a category
+  Future<CategoryOrIngredient> getCategory(int id) async {
+    final response = await _client.get("/menu/category/$id");
 
+    return CategoryOrIngredient.fromJson(response.data);
+  }
+
+  /// Get all ingredients
   Future<List<CategoryOrIngredient>> getIngredients() async {
     final response = await _client.get("/menu/ingredients");
     final json = response.data as List<dynamic>;
