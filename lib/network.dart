@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:common/models/category.dart';
 import 'package:common/models/item_details.dart';
 import 'package:common/models/menu_item.dart';
@@ -69,12 +67,12 @@ class ApiClient {
 
     return items;
   }
-  
+
   /// Get the information about a category
   Future<CategoryOrIngredient> getCategory(int id) async {
     final response = await _client.get("/menu/category/$id");
 
-    return CategoryOrIngredient.fromJson(response.data);
+    return CategoryOrIngredient.fromJson(response.data as Map<String, dynamic>);
   }
 
   /// Get all ingredients
@@ -86,6 +84,12 @@ class ApiClient {
     }).toList();
 
     return categories;
+  }
+
+  Future<CategoryOrIngredient> getIngredient(int id) async {
+    final response = await _client.get("menu/ingredient/$id");
+
+    return CategoryOrIngredient.fromJson(response.data as Map<String, dynamic>);
   }
 
   /// Get the remaining details of an item
