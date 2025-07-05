@@ -4,16 +4,23 @@ import 'package:common/models/menu_item.dart';
 import 'package:dio/dio.dart';
 import 'package:dio_cache_interceptor/dio_cache_interceptor.dart';
 import 'package:flutter/foundation.dart' hide Category;
+import 'package:flutter/widgets.dart';
 import 'package:http_cache_file_store/http_cache_file_store.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
 
 class ApiClient {
   final Dio _client;
 
+  static final imageHeaders = Options(responseType: ResponseType.bytes, contentType: "image/avif");
+
   ApiClient._internal(this._client);
 
   static Future<ApiClient> init() async {
-    var client = Dio(BaseOptions(baseUrl: "http://localhost:8787"));
+    var client = Dio(
+      BaseOptions(
+        baseUrl: kDebugMode ? "http://localhost:8787" : "https://rr.net",
+      ),
+    ); // TODO: Update to actual domain
     debugPrint("Initialized Dio HTTP client");
 
     if (!kIsWeb) {
@@ -98,5 +105,25 @@ class ApiClient {
     final details = ItemDetails.fromJson(response.data as Map<String, dynamic>);
 
     return details;
+  }
+
+  /// Gets the small image of an item
+  Future<ImageProvider> getThumbnail(int id) async {
+    final response = await _client.get(
+      "/menu/$id/thumbnail",
+      options: imageHeaders,
+    );
+
+    return MemoryImage(Uint8List.fromList(response.data!));
+  }
+
+  /// Gets the full image of an item
+  Future<ImageProvider> getImage(int id) async {
+    final response = await _client.get(
+      "/menu/$id/image",
+      options: imageHeaders,
+    );
+
+    return MemoryImage(Uint8List.fromList(response.data!));
   }
 }
