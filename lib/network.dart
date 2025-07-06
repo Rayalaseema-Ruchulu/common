@@ -66,7 +66,7 @@ class ApiClient {
 
   /// Get all the items of a category
   Future<List<MenuItem>> getCategoryItems(int id) async {
-    final response = await _client.get("/menu/category/$id/items");
+    final response = await _client.get("/menu/category/$id");
     final json = response.data as List<dynamic>;
     final items = json.map((item) {
       return MenuItem.fromJson(item);
