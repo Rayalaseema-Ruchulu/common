@@ -97,7 +97,7 @@ class ApiClient {
   }
 
   Future<CategoryOrIngredient> getIngredient(int id) async {
-    final response = await _client.get("menu/ingredient/$id");
+    final response = await _client.get("/menu/ingredient/$id");
 
     return CategoryOrIngredient.fromJson(response.data as Map<String, dynamic>);
   }
