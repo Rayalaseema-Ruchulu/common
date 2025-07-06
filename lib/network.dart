@@ -11,7 +11,10 @@ import 'package:path_provider/path_provider.dart' as path_provider;
 class ApiClient {
   final Dio _client;
 
-  static final imageHeaders = Options(responseType: ResponseType.bytes, contentType: "image/avif");
+  static final imageHeaders = Options(
+    responseType: ResponseType.bytes,
+    contentType: "image/avif",
+  );
 
   ApiClient._internal(this._client);
 
@@ -102,6 +105,8 @@ class ApiClient {
   /// Get the remaining details of an item
   Future<ItemDetails> getItemDetails(int id) async {
     final response = await _client.get("/menu/$id/details");
+    debugPrint(response.data.runtimeType.toString());
+    debugPrint(response.data.toString());
     final details = ItemDetails.fromJson(response.data as Map<String, dynamic>);
 
     return details;
