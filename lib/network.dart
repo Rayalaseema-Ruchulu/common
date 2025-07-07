@@ -69,7 +69,7 @@ class ApiClient {
 
   /// Get all the items of a category
   Future<List<MenuItem>> getCategoryItems(int id) async {
-    final response = await _client.get("/menu/category/$id");
+    final response = await _client.get("/menu/category/$id/items");
     final json = response.data as List<dynamic>;
     final items = json.map((item) {
       return MenuItem.fromJson(item);
@@ -105,8 +105,6 @@ class ApiClient {
   /// Get the remaining details of an item
   Future<ItemDetails> getItemDetails(int id) async {
     final response = await _client.get("/menu/$id/details");
-    debugPrint(response.data.runtimeType.toString());
-    debugPrint(response.data.toString());
     final details = ItemDetails.fromJson(response.data as Map<String, dynamic>);
 
     return details;
