@@ -10,24 +10,24 @@ class LoadingTiles extends StatelessWidget {
       spacing: 8.0,
       runSpacing: 4.0,
       children: [
-        Shimmer(
-          child: const Card.filled(
-            margin: EdgeInsets.all(0),
-            child: SizedBox(width: 40, height: 34),
+        Card.filled(
+          margin: const EdgeInsets.all(0),
+          child: Shimmer(
+            child: const SizedBox(width: 150, height: 34),
           ),
         ),
 
-        Shimmer(
-          child: const Card.filled(
-            margin: EdgeInsets.all(0),
-            child: SizedBox(width: 20, height: 34),
+        Card.filled(
+          margin: const EdgeInsets.all(0),
+          child: Shimmer(
+            child: const SizedBox(width: 100, height: 34),
           ),
         ),
 
-        Shimmer(
-          child: const Card.filled(
-            margin: EdgeInsets.all(0),
-            child: SizedBox(width: 50, height: 34),
+        Card.filled(
+          margin: const EdgeInsets.all(0),
+          child: Shimmer(
+            child: const SizedBox(width: 200, height: 34),
           ),
         ),
       ],
