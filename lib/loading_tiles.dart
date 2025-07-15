@@ -11,6 +11,7 @@ class LoadingTiles extends StatelessWidget {
       runSpacing: 4.0,
       children: [
         Card.filled(
+          clipBehavior: Clip.hardEdge,
           margin: const EdgeInsets.all(0),
           child: Shimmer(
             child: const SizedBox(width: 150, height: 34),
@@ -18,6 +19,7 @@ class LoadingTiles extends StatelessWidget {
         ),
 
         Card.filled(
+          clipBehavior: Clip.hardEdge,
           margin: const EdgeInsets.all(0),
           child: Shimmer(
             child: const SizedBox(width: 100, height: 34),
@@ -25,6 +27,7 @@ class LoadingTiles extends StatelessWidget {
         ),
 
         Card.filled(
+          clipBehavior: Clip.hardEdge,
           margin: const EdgeInsets.all(0),
           child: Shimmer(
             child: const SizedBox(width: 200, height: 34),
