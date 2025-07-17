@@ -14,7 +14,7 @@ class LoadingTiles extends StatelessWidget {
           clipBehavior: Clip.hardEdge,
           margin: const EdgeInsets.all(0),
           child: Shimmer(
-            child: const SizedBox(width: 150, height: 34),
+            child: const SizedBox(width: 150, height: 28),
           ),
         ),
 
@@ -22,7 +22,7 @@ class LoadingTiles extends StatelessWidget {
           clipBehavior: Clip.hardEdge,
           margin: const EdgeInsets.all(0),
           child: Shimmer(
-            child: const SizedBox(width: 100, height: 34),
+            child: const SizedBox(width: 100, height: 28),
           ),
         ),
 
@@ -30,7 +30,7 @@ class LoadingTiles extends StatelessWidget {
           clipBehavior: Clip.hardEdge,
           margin: const EdgeInsets.all(0),
           child: Shimmer(
-            child: const SizedBox(width: 200, height: 34),
+            child: const SizedBox(width: 200, height: 28),
           ),
         ),
       ],

@@ -67,6 +67,17 @@ class ApiClient {
     return categories;
   }
 
+  Future<List<CategoryOrIngredient>> getFeaturedCategories() async {
+    final response = await _client.get("/menu/categories/featured");
+    final json = response.data as List<dynamic>;
+    final categories = json.map((category) {
+      return CategoryOrIngredient.fromJson(category);
+    }).toList();
+
+    return categories;
+  }
+
+
   /// Get all the items of a category
   Future<List<MenuItem>> getCategoryItems(int id) async {
     final response = await _client.get("/menu/category/$id/items");
