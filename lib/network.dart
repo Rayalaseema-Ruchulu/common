@@ -21,7 +21,7 @@ class ApiClient {
   static Future<ApiClient> init() async {
     var client = Dio(
       BaseOptions(
-        baseUrl: kDebugMode ? "http://localhost:8787" : "https://public.neeleshpoli.workers.dev",
+        baseUrl: kDebugMode ? "http://localhost:8787/api" : "https://public.neeleshpoli.workers.dev/api",
       ),
     ); // TODO: Update to actual domain
     debugPrint("Initialized Dio HTTP client");
